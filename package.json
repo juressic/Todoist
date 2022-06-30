@@ -1,0 +1,15 @@
+{
+  "name": "todoist",
+  "version": "1.0.0",
+  "description": "web app for managing tasks!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juressic",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.18"
+  }
+}
