@@ -1,5 +1,6 @@
 import TodoSchema from '../models/Todo.js';
 import Users from '../models/Users.js';
+import { UserTodos } from './user-c.js';
 
 export const GetMyTodos = async (req, res, next) => {
   try {
@@ -39,6 +40,24 @@ export const EditMyTodo = async (req, res, next) => {
     });
 
     res.status(200).json(editTodo);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const DeleteMyTodo = async (req, res, next) => {
+  try {
+    const todoDelete = await TodoSchema.findByIdAndRemove({
+      _id: req.body._id,
+    });
+
+    const currentUser = await Users.findByIdAndUpdate(
+      { _id: req.params.id },
+      { $pullAll: { todos: [{ _id: req.body._id }] } },
+      { new: true }
+    ).then((todos) => console.log(todos));
+
+    res.send(200);
   } catch (err) {
     next(err);
   }

@@ -4,6 +4,6 @@ const router = express.Router();
 import { VerifyUser } from '../utilities/verifyToken.js';
 
 router.get('/users', AllUsers);
-router.get('/user/todos/:id', VerifyUser, UserTodos);
+router.get('/user/todos/:id', UserTodos);
 
 export default router;
