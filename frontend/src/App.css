@@ -1,0 +1,316 @@
+* ::after ::before {
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  z-index: 0;
+}
+
+.logo {
+  margin-left: 30px;
+}
+
+.App-body {
+  background-color: #737f9a;
+  height: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(6px + 2vmin);
+  color: white;
+}
+
+.auth-form-section {
+  justify-content: center;
+  position: relative;
+  background-color: rgba(73, 92, 121, 0.685);
+  width: 300px;
+  min-height: 400px;
+}
+
+@keyframes login-form-anim {
+  from {
+    border-top: 2px solid #fe7f00;
+  }
+  to {
+    border-top: 2px solid #282c3400;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+  height: 100%;
+  animation-name: login-form-anim;
+  animation-duration: 0.9s;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+  height: 100%;
+  animation-name: login-form-anim;
+  animation-duration: 0.9s;
+}
+
+input {
+  padding: 15px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.login-btn {
+  width: 90px;
+  padding: 15px 0px;
+  background-color: rgb(33, 111, 167);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  margin: 10px;
+  box-shadow: 5px 5px 5px #4a5261;
+}
+
+.login-btn:hover {
+  cursor: pointer;
+}
+
+.login-btn:active {
+  background-color: rgb(79, 137, 178);
+}
+
+.login-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: rgba(73, 92, 121, 0.685);
+  top: -25%;
+  height: 20%;
+  width: 100%;
+  cursor: pointer;
+  z-index: 0;
+  animation-name: login-anim;
+  border-radius: 15px 15px 0 0;
+  animation-duration: 0.4s;
+  transition: background-color 0.9s ease-in-out;
+}
+
+.login-link:hover {
+  background-color: rgba(55, 69, 91, 0.685);
+  box-shadow: 2px 2px 2px #4a5261;
+  transition: background-color 0.4s;
+  transition: box-shadow 0.4s;
+}
+
+.register-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: rgba(73, 92, 121, 0.685);
+  bottom: -25%;
+  height: 20%;
+  width: 100%;
+  cursor: pointer;
+  z-index: 0;
+  border-radius: 0 0 15px 15px;
+  animation-name: reg-anim;
+  animation-duration: 0.4s;
+  transition: background-color 0.9s ease-in-out;
+}
+
+.register-link:hover {
+  background-color: rgba(55, 69, 91, 0.685);
+  box-shadow: 2px 2px 2px #4a5261;
+  transition: background-color 0.4s;
+  transition: box-shadow 0.4s;
+}
+
+.errorLogin {
+  font-size: 15px;
+  color: red;
+}
+
+.logout {
+  cursor: pointer;
+  padding: 20px;
+}
+
+.logout:hover {
+  color: aquamarine;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  min-width: 400px;
+  background: #566783;
+  border-radius: 30px;
+  margin: 15px 0;
+}
+
+.add-item {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  right: 0;
+  margin: 30px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #464d5f;
+  cursor: pointer;
+}
+
+.add-item h1 {
+  transform: translateY(-8%);
+}
+
+.add-item:hover {
+  background-color: #69a577;
+}
+
+button {
+  border: none;
+  padding: 15px;
+  color: white;
+  background: #bf1b1b;
+  border-radius: 10%;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.add-button {
+  border: none;
+  padding: 15px;
+  color: white;
+  background: #27b525;
+  border-radius: 10%;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.add-button:active {
+  background-color: #00ff08;
+}
+
+.edit-button {
+  border: none;
+  padding: 15px;
+  color: white;
+  background: #bebe58;
+  border-radius: 10%;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.edit-button:active {
+  background-color: #f2f204;
+}
+
+p {
+  font-size: 18px;
+}
+
+.uncompleted-circle {
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+  background: silver;
+  border-radius: 50%;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.completed-circle {
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+  background: rgb(88, 190, 112);
+  border-radius: 50%;
+  margin-left: 20px;
+  cursor: pointer;
+  text-decoration-style: double;
+}
+
+.edit-del-section {
+  display: flex;
+}
+
+.edit-todo {
+  width: 20px;
+  height: 20px;
+  background: rgb(190, 190, 88);
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+.delete-todo {
+  width: 20px;
+  height: 20px;
+  background: rgb(190, 88, 88);
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.add-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 500px;
+  height: 200px;
+  border-radius: 15px;
+  background: #282c34ed;
+  z-index: 50;
+}
+
+.edit-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+  width: 500px;
+  height: 200px;
+  transform: translate(-65%, -40%);
+  background: #282c34ed;
+  z-index: 10;
+  border-radius: 15px;
+}
+
+.close-window {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 20px;
+  width: 10px;
+  border-radius: 50px;
+  margin: 20px;
+}

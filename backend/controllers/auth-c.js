@@ -23,7 +23,9 @@ export const register = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
   try {
-    const userData = await UserSchema.findOne({ username: req.body.username });
+    const userData = await UserSchema.findOne({
+      username: req.body.username,
+    });
 
     const checkPassword = await bcrypt.compare(
       req.body.password,
@@ -36,7 +38,7 @@ export const login = async (req, res, next) => {
 
     const token = jwt.sign({ id: userData._id }, process.env.JWT);
 
-    const { password, __v, todos, _id, ...otherDetails } = userData._doc;
+    const { password, __v, todos, ...otherDetails } = userData._doc;
 
     res
       .cookie('access_token', token, { httpOnly: true })
