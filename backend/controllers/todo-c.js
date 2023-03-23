@@ -1,8 +1,8 @@
-import TodoSchema from '../models/Todo.js';
-import Users from '../models/Users.js';
-import { UserTodos } from './user-c.js';
+const TodoSchema = require('../models/Todo.js');
+const Users = require('../models/Users.js');
+const { UserTodos } = require('./user-c.js');
 
-export const GetMyTodos = async (req, res, next) => {
+const GetMyTodos = async (req, res, next) => {
   try {
     const toDos = await TodoSchema.find();
     res.status(200).json(toDos);
@@ -11,7 +11,7 @@ export const GetMyTodos = async (req, res, next) => {
   }
 };
 
-export const PostMyTodo = async (req, res, next) => {
+const PostMyTodo = async (req, res, next) => {
   try {
     const newTodo = new TodoSchema({
       title: req.body.title,
@@ -33,7 +33,7 @@ export const PostMyTodo = async (req, res, next) => {
   }
 };
 
-export const EditMyTodo = async (req, res, next) => {
+const EditMyTodo = async (req, res, next) => {
   try {
     const editTodo = await TodoSchema.findByIdAndUpdate(req.params.id, {
       $set: req.body,
@@ -45,7 +45,7 @@ export const EditMyTodo = async (req, res, next) => {
   }
 };
 
-export const DeleteMyTodo = async (req, res, next) => {
+const DeleteMyTodo = async (req, res, next) => {
   try {
     const todoDelete = await TodoSchema.findByIdAndRemove({
       _id: req.body._id,
@@ -62,3 +62,5 @@ export const DeleteMyTodo = async (req, res, next) => {
     next(err);
   }
 };
+
+module.exports = { GetMyTodos, PostMyTodo, EditMyTodo, DeleteMyTodo };

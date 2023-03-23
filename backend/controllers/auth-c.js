@@ -1,9 +1,9 @@
-import UserSchema from '../models/Users.js';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import { createError } from '../utilities/error.js';
+const UserSchema = require('../models/Users.js');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { createError } = require('../utilities/error.js');
 
-export const register = async (req, res, next) => {
+const register = async (req, res, next) => {
   try {
     const salt = bcrypt.genSaltSync(8);
     const hash = bcrypt.hashSync(req.body.password, salt);
@@ -21,7 +21,7 @@ export const register = async (req, res, next) => {
   }
 };
 
-export const login = async (req, res, next) => {
+const login = async (req, res, next) => {
   try {
     const userData = await UserSchema.findOne({
       username: req.body.username,
@@ -49,7 +49,7 @@ export const login = async (req, res, next) => {
   }
 };
 
-export const logout = (req, res, next) => {
+const logout = (req, res, next) => {
   try {
     localStorage.removeItem('access_token');
     res.send('Logout successfully');
@@ -57,3 +57,5 @@ export const logout = (req, res, next) => {
     next(err);
   }
 };
+
+module.exports = { register, login, logout };

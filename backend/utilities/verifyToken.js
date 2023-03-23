@@ -1,7 +1,7 @@
-import jwt from 'jsonwebtoken';
-import { createError } from '../utilities/error.js';
+const jwt = require('jsonwebtoken');
+const { createError } = require('../utilities/error.js');
 
-export const VerifyToken = (req, res, next) => {
+const VerifyToken = (req, res, next) => {
   const token = req.cookies.access_token;
 
   if (!token) {
@@ -18,7 +18,7 @@ export const VerifyToken = (req, res, next) => {
   });
 };
 
-export const VerifyUser = (req, res, next) => {
+const VerifyUser = (req, res, next) => {
   VerifyToken(req, res, () => {
     console.log(req.user.id + ' ' + req.params.id);
     if (req.user.id === req.params.id) {
@@ -28,3 +28,5 @@ export const VerifyUser = (req, res, next) => {
     }
   });
 };
+
+module.exports = { VerifyToken, VerifyUser };

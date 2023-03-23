@@ -1,8 +1,8 @@
-import Users from '../models/Users.js';
-import Todos from '../models/Todo.js';
-import mongoose from 'mongoose';
+const Users = require('../models/Users.js');
+const Todos = require('../models/Todo.js');
+const mongoose = require('mongoose');
 
-export const AllUsers = async (req, res, next) => {
+const AllUsers = async (req, res, next) => {
   try {
     const allUsers = await Users.find();
     res.json(allUsers);
@@ -11,7 +11,7 @@ export const AllUsers = async (req, res, next) => {
   }
 };
 
-export const UserTodos = async (req, res, next) => {
+const UserTodos = async (req, res, next) => {
   try {
     const myData = await Users.findById(req.params.id);
     const myTodosId = myData.todos;
@@ -23,3 +23,5 @@ export const UserTodos = async (req, res, next) => {
     next(err);
   }
 };
+
+module.exports = { AllUsers, UserTodos };

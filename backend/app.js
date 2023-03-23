@@ -1,12 +1,13 @@
 //IMPORTS
-import express from 'express';
-import TodoRoute from './routes/todo.js';
-import AuthRoute from './routes/auth.js';
-import mongoose from 'mongoose';
-import UsersRoute from './routes/user.js';
-import dotenv from 'dotenv/config';
-import cookieParser from 'cookie-parser';
-import cors from 'cors';
+const express = require('express');
+const TodoRoute = require('./routes/todo.js');
+const AuthRoute = require('./routes/auth.js');
+const mongoose = require('mongoose');
+const UsersRoute = require('./routes/user.js');
+const dotenv = require('dotenv/config');
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
+const path = require('path');
 //EXPRESS CONNECTION
 const port = 5555;
 const app = express();
@@ -21,6 +22,7 @@ app.listen(port, () => {
 };
 app.use(cors(corsOptions));*/
 
+app.use(express.static(path.join(__dirname, 'build')));
 //MIDDLEWARES
 app.use(cors());
 app.use(cookieParser());
@@ -28,6 +30,11 @@ app.use(express.json());
 app.use(TodoRoute);
 app.use(AuthRoute);
 app.use(UsersRoute);
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 //ERROR HANDLER
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
