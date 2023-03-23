@@ -22,6 +22,7 @@ const register = async (req, res, next) => {
 };
 
 const login = async (req, res, next) => {
+  console.log('server login attempt');
   try {
     const userData = await UserSchema.findOne({
       username: req.body.username,

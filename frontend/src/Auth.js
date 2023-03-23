@@ -20,6 +20,7 @@ export function Login({ setAuth, setMyUserId, getTodos }) {
 
   const userLogin = async (e) => {
     // e.preventDefault();
+    console.log('Sending login');
     try {
       const response = await axios({
         method: 'post',
