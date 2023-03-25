@@ -22,7 +22,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(path.join(__dirname, 'build')));
 //MIDDLEWARES
 //app.use(cors());
 app.use(cookieParser());
@@ -32,7 +32,7 @@ app.use(AuthRoute);
 app.use(UsersRoute);
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 //ERROR HANDLER
