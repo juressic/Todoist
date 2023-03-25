@@ -16,7 +16,7 @@ app.listen(port, () => {
 });
 
 const corsOptions = {
-  origin: 'http://127.0.0.1:5555',
+  origin: 'http://localhost:5555',
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
