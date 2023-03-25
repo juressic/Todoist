@@ -22,7 +22,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 //MIDDLEWARES
 //app.use(cors());
 app.use(cookieParser());
